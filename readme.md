@@ -27,8 +27,9 @@ data
 |__<dataset name> e.g., cora, corum, disgenet, meetups, pubmed. These names are used in the notebooks.
 ```
 In the `data` directory, put the appropriate data from the following sources:
-- Cora CS publication citation network dataset: https://relational.fit.cvut.cz/dataset/CORA
-- CORUM protein complex dataset: https://mips.helmholtz-muenchen.de/corum/#download
-- DisGeNet disease genomics dataset: http://www.disgenet.org/downloads
-- Meetups social networking dataset: https://www.kaggle.com/sirpunch/meetups-data-from-meetupcom
-- PubMed diabetes publication citation network dataset: https://linqs.soe.ucsc.edu/data
+- Cora CS publication citation network dataset: https://relational.fit.cvut.cz/dataset/CORA. Vertices are papers and hyperedges are the cited works of a given paper (so its 1-neighborhood). A bit contrived, I know, but we do see a performance increase over the graph structure by itself. Each paper (and thus each hyperedge) is classified into one of seven classes based on topic.
+- CORUM protein complex dataset: https://mips.helmholtz-muenchen.de/corum/#download. Vertices are proteins and hyperedges are collections of proteins. Each hyperedge is labeled based on whether or not the collection forms a protein complex. Negative examples are generated in the notebook.
+- DisGeNet disease genomics dataset: http://www.disgenet.org/downloads. Vertices are genes and hyperedges are diseases. Each disease is classified into one of 23 MeSH codes (if it has multiple, we randomly select one).
+- Meetups social networking dataset: https://www.kaggle.com/sirpunch/meetups-data-from-meetupcom. Vertices are members and hyperedges are meetup events. Each meetup event is classified into one of 36 types. We also experiment with combining the two largest--"Tech" and "Career & Business"--into one class and all others into another class to give a balanced dataset.
+- PubMed diabetes publication citation network dataset: https://linqs.soe.ucsc.edu/data. Vertices are papers and hyperedges are the cited works of a given p
+aper. Again, a bit contrived, but there are more baselines to compare with since there's an underlying (directed) graph structure and a large body of work which studies deep learning on graphs. Each paper (and thus each hyperedge) is classified into one of three classes based on the type of diabetes it studies.
