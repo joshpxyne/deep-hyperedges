@@ -2,7 +2,7 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 import tensorflow as tf
 import keras.backend as K
-from keras.layers import Input, Dense, LSTM, GRU, Embedding, Lambda, concatenate, Add
+from keras.layers import Input, Dense, LSTM, GRU, Embedding, Lambda, concatenate, Add, Dropout
 from keras.models import Model, load_model
 from keras import optimizers
 from keras.callbacks import ModelCheckpoint, TensorBoard
@@ -70,8 +70,10 @@ def DeepHyperedges(vertex_embedding_dimension,hyperedge_embedding_dimension,max_
     summed = Adder(sum_list)
     dense_rho = Dense(dense_rho_depth, activation='sigmoid')(summed)
     concat = concatenate([layer_1["layer_1_hyperedge"],dense_rho])
+    drop1 = Dropout(rate=0.4)(concat)
     final_dense = Dense(100, activation='relu')(concat)
-    output_tensor = Dense(num_outputs, activation='softmax')(final_dense)
+    drop2 = Dropout(rate=0.4)(final_dense)
+    output_tensor = Dense(num_outputs, activation='softmax')(drop2)
 
     deephyperedge_model = Model(inputs=input_tensor,outputs=output_tensor)
     
@@ -83,8 +85,11 @@ def DeepHyperedges(vertex_embedding_dimension,hyperedge_embedding_dimension,max_
 
 def MLP(input_dimension,num_outputs,dataset_name):
     input_tensor = Input((input_dimension,))
-    dense_hidden_1 = Dense(100, activation='relu')(input_tensor)
-    output_tensor = Dense(num_outputs, activation='softmax')(dense_hidden_1)
+    drop1 = Dropout(rate=0.4)(input_tensor)
+    dense_hidden_1 = Dense(100, activation='relu')(drop1)
+    drop2 = Dropout(rate=0.4)(dense_hidden_1)
+    output_tensor = Dense(num_outputs, activation='softmax')(drop2)
+    
     MLP_model = Model(inputs=input_tensor,outputs=output_tensor)
     
     adam = optimizers.Adam(lr=1e-4, epsilon=1e-3)
@@ -128,8 +133,10 @@ def DeepSets(vertex_embedding_dimension,max_hyperedge_size,num_outputs,dataset_n
 
     summed = Adder(sum_list)
     dense_rho = Dense(dense_rho_depth, activation='sigmoid')(summed)
+    drop1 = Dropout(rate=0.4)(dense_rho)
     final_dense = Dense(100, activation='relu')(dense_rho)
-    output_tensor = Dense(num_outputs, activation='softmax')(final_dense)
+    drop2 = Dropout(rate=0.4)(final_dense)
+    output_tensor = Dense(num_outputs, activation='softmax')(drop2)
 
     deepset_model = Model(inputs=input_tensor,outputs=output_tensor)
     
