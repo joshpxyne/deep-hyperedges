@@ -1,6 +1,6 @@
 import random
 
-def TraverseAndSelect(length, num_walks, hyperedges, vertexMemberships, p_select_method, p_select=0.15, p_select_initial=0.1):
+def TraverseAndSelect(length, num_walks, hyperedges, vertexMemberships, alpha=1., beta=0):
     walksTAS = []
     for hyperedge_index in hyperedges:
         hyperedge = hyperedges[hyperedge_index]
@@ -11,14 +11,7 @@ def TraverseAndSelect(length, num_walks, hyperedges, vertexMemberships, p_select
             curr_hyperedge_num = hyperedge_index
             curr_hyperedge = hyperedge
             for i in range(length): 
-                if p_select_method=="constant":
-                    if initial:
-                        proba = p_select_initial
-                        initial=False
-                    else:
-                        proba = p_select
-                if p_select_method=="inverse":
-                    proba = float(1)/len(vertexMemberships[curr_vertex])
+                proba = (float(alpha)/len(vertexMemberships[curr_vertex])) + beta
                 if random.random()<proba:
                     adjacent_vertices = curr_hyperedge["members"]
                     curr_vertex = random.choice(adjacent_vertices)
@@ -29,7 +22,7 @@ def TraverseAndSelect(length, num_walks, hyperedges, vertexMemberships, p_select
             walksTAS.append(walk_hyperedge)        
     return walksTAS
 
-def SubsampleAndTraverse(length, num_walks, hyperedges, vertexMemberships, p_traverse_method, p_traverse=0.15, p_traverse_initial=0.1):
+def SubsampleAndTraverse(length, num_walks, hyperedges, vertexMemberships, alpha=1., beta=0):
     walksSAT = []
     for hyperedge_index in hyperedges:
         hyperedge = hyperedges[hyperedge_index]
@@ -40,14 +33,7 @@ def SubsampleAndTraverse(length, num_walks, hyperedges, vertexMemberships, p_tra
             hyperedge_num = hyperedge_index
             curr_hyperedge = hyperedge
             for i in range(length):
-                if p_traverse_method=="constant":
-                    if initial:
-                        proba = p_traverse_initial
-                        initial=False
-                    else:
-                        proba = p_traverse
-                if p_traverse_method=="inverse":
-                    proba = float(1)/len(curr_hyperedge["members"])
+                proba = (float(alpha)/len(curr_hyperedge["members"])) + beta
                 if random.random()<proba:
                     adjacent_hyperedges = vertexMemberships[curr_vertex]
                     hyperedge_num = random.choice(adjacent_hyperedges)
