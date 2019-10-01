@@ -1,6 +1,6 @@
 # Deep Hyperedges
 
-This project implements the hypergraph learning techniques introduced in ____.
+This project implements the hypergraph learning techniques introduced in "Deep Hyperedges: A Framework for Transductive and Inductive Learning on Hypergraphs". This is a very important and exciting problem, so we're encouraging collaboration here. Work on this particular framework is still very much in an active state.
 
 ### HypergraphWalks.py
 This file implements the SubsampleAndTraverse and TraverseAndSelect random walk procedures, with constant or inverse switching probabilities. 
