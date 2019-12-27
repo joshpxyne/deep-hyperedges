@@ -2,7 +2,7 @@
 
 Update 09/30/19: repository is now public.
 
-This repository implements the hypergraph learning techniques introduced in "Deep Hyperedges: A Framework for Transductive and Inductive Learning on Hypergraphs", to be presented in December at the Sets & Partitions Workshop at the 33rd Conference on Neural Information Processing Systems (NeurIPS 2019). This is a very important and exciting problem, so we're encouraging collaboration here. Work on this particular framework is still very much in an active state.
+This repository implements the hypergraph learning techniques introduced in [Deep Hyperedges: A Framework for Transductive and Inductive Learning on Hypergraphs](https://arxiv.org/abs/1910.02633), to be presented in December at the Sets & Partitions Workshop at the 33rd Conference on Neural Information Processing Systems (NeurIPS 2019). This is a very important and exciting problem, so we're encouraging collaboration here. Work on this particular framework is still very much in an active state.
 
 ### HypergraphWalks.py
 This file implements the SubsampleAndTraverse and TraverseAndSelect random walk procedures, with constant or inverse switching probabilities. 
