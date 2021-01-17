@@ -33,6 +33,6 @@ In the `data` directory, put the appropriate data from the following sources:
 - PubMed diabetes publication citation network dataset: https://linqs.soe.ucsc.edu/data. Vertices are papers and hyperedges are the cited works of a given paper. Again, a bit contrived, but there are more baselines to compare with since there's an underlying (directed) graph structure and a large body of work which studies deep learning on graphs. Each paper (and thus each hyperedge) is classified into one of three classes based on the type of diabetes it studies.
 
 Citation:
-'''
+```
 Payne, Josh. "Deep hyperedges: a framework for transductive and inductive learning on hypergraphs." arXiv preprint arXiv:1910.02633 (2019).
-'''
+```
