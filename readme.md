@@ -34,5 +34,9 @@ In the `data` directory, put the appropriate data from the following sources:
 
 Citation:
 ```
-Payne, Josh. "Deep hyperedges: a framework for transductive and inductive learning on hypergraphs." arXiv preprint arXiv:1910.02633 (2019).
-```
+@article{payne2019deep,
+  title={Deep hyperedges: a framework for transductive and inductive learning on hypergraphs},
+  author={Payne, Josh},
+  journal={arXiv preprint arXiv:1910.02633},
+  year={2019}
+}```
