@@ -34,7 +34,7 @@ In the `data` directory, put the appropriate data from the following sources:
 
 Citation:
 ```
-@article{payne2019deep,
+@misc{payne2019deep,
     title={Deep Hyperedges: a Framework for Transductive and Inductive Learning on Hypergraphs},
     author={Josh Payne},
     year={2019},
